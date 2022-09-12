@@ -19,11 +19,11 @@ class ViewController: UIViewController {
      }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        myView.dataArray = [BarChartValues(month: "1", salesValue: myView.salesValues[0], barColour: .blue, salesValueColour: .systemOrange),
-                            BarChartValues(month: "2", salesValue: myView.salesValues[1], barColour: .red, salesValueColour: .systemBlue),BarChartValues(month: "3", salesValue: myView.salesValues[2], barColour: .green, salesValueColour: .systemPink)
-                            ,BarChartValues(month: "4", salesValue: myView.salesValues[3], barColour: .brown, salesValueColour: .systemGray2)
-                            ,BarChartValues(month: "5", salesValue:myView.salesValues[4], barColour:.cyan, salesValueColour: .systemYellow)
-                            ,BarChartValues(month: "6", salesValue: myView.salesValues[5], barColour:.darkGray, salesValueColour: .systemCyan )
+        myView.dataArray = [BarChartValues(month: "1", salesValue: myView.salesValues[0], barColour: .gray, salesValueColour: myView.salesValuesColors[0]),
+                            BarChartValues(month: "2", salesValue: myView.salesValues[1], barColour: .gray, salesValueColour: myView.salesValuesColors[1]),BarChartValues(month: "3", salesValue: myView.salesValues[2], barColour: .gray, salesValueColour: myView.salesValuesColors[2])
+                            ,BarChartValues(month: "4", salesValue: myView.salesValues[3], barColour: .gray, salesValueColour: myView.salesValuesColors[3])
+                            ,BarChartValues(month: "5", salesValue:myView.salesValues[4], barColour:.gray, salesValueColour: myView.salesValuesColors[4])
+                            ,BarChartValues(month: "6", salesValue: myView.salesValues[5], barColour:.gray, salesValueColour: myView.salesValuesColors[5] )
                             ]
         
 

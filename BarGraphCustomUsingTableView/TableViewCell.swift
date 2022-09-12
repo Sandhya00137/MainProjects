@@ -18,7 +18,7 @@ class TableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnView))
-        dataView.addGestureRecognizer(tapGesture)
+        mainImageView.addGestureRecognizer(tapGesture)
         mainImageView.layer.cornerRadius = 7.0
         secondImageView.layer.cornerRadius = 5.0
     }

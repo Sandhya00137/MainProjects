@@ -17,7 +17,8 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
     var intervalsValue : [Double] = []
     var labelsArray : [UILabel] = []
     var secondLabelArray : [UILabel] = []
-    
+    var salesValuesColors : [UIColor] = []
+    var isActive : Bool = false
     
     let tableview = UITableView()
     
@@ -25,6 +26,7 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
         super.init(frame: frame)
         createTableView()
         creatingIntervalRanges()
+        changeImageColor()
         
     }
     required init?(coder: NSCoder) {
@@ -46,9 +48,9 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
         let myview = UIView(frame: CGRect(x: 0, y: frame.height - 430 , width: frame.width, height: 150))
         addSubview(myview)
         
-        let firstStack = creatingImageView(color: .yellow,  width: myview.frame.width / 3, text: "Correct answers")
-        let secondStack = creatingImageView(color: .blue,  width: myview.frame.width / 3, text: "Incorrect Answers")
-        let thirdStack = creatingImageView(color: .red,  width: myview.frame.width / 3, text: "Skipped Visited")
+        let firstStack = creatingImageView(color: .systemGreen,  width: myview.frame.width / 3, text: "Correct answers")
+        let secondStack = creatingImageView(color: .systemCyan,  width: myview.frame.width / 3, text: "Incorrect Answers")
+        let thirdStack = creatingImageView(color: .systemMint,  width: myview.frame.width / 3, text: "Skipped Visited")
         
         let stackview = UIStackView(arrangedSubviews: [firstStack,secondStack,thirdStack])
         stackview.distribution = .fillEqually
@@ -57,9 +59,9 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
         stackview.clipsToBounds = true
         myview.addSubview(stackview)
         
-        let secondFirstLabel = creatingImageView(color: .gray, width: myview.frame.width / 3, text: "partially Correct")
+        let secondFirstLabel = creatingImageView(color:.systemOrange, width: myview.frame.width / 3, text: "partially Correct")
         
-        let secondSecondLabel = creatingImageView(color: .green, width: myview.frame.width / 3, text: "skipped Not Visited")
+        let secondSecondLabel = creatingImageView(color: .systemYellow, width: myview.frame.width / 3, text: "skipped Not Visited")
         
         let secondStackview = UIStackView(arrangedSubviews: [secondFirstLabel,secondSecondLabel])
         secondStackview.distribution = .fill
@@ -149,6 +151,7 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
         cell.dataView.backgroundColor = dataArray[indexPath.row].barColour
         cell.mainImageView.backgroundColor = .darkGray
         cell.secondImageView.backgroundColor = dataArray[indexPath.row].salesValueColour
+        
         cell.callback = { cell in
             guard let index = tableView.indexPath(for: cell) else{
                 return
@@ -242,5 +245,18 @@ class CustomView : UIView, UITableViewDelegate, UITableViewDataSource {
         stackView.spacing = 4.0
         stackView.distribution = .fill
         return stackView
+    }
+    func changeImageColor() 
+    {
+        if isActive ==  true{
+            salesValuesColors = [.systemGreen,.systemCyan,.systemMint,.systemOrange,.systemYellow,.systemGreen]
+        }
+        else{
+            for _ in 0...salesValues.count
+            {
+                salesValuesColors.append(.gray)
+            }
+        }
+       
     }
 }
